@@ -16,4 +16,5 @@ export default defineConfig({
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' },
   },
+  assetsInclude: ['**/*.ttf', '**/*.woff', '**/*.woff2'], // Inclut les polices dans le build
 });
