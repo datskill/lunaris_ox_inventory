@@ -1,15 +1,9 @@
-// @font-face {
-//   font-family: "Space-Crusaders";
-//   src: url('../public/fonts/Space-Crusaders.ttf') format("truetype");
-// }
 
-@font-face {
-  font-family: "sky";
-  src: url('../../stream/sky.ttf') format("truetype");
-}
+$mainFont: 'Space Crusaders';
+$secondFont: 'Roboto Mono';
 body {
   margin: 0;
-  font-family: "sky" !important;
+  font-family: $mainFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
@@ -21,7 +15,7 @@ body {
   height: 100%;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, Space Crusaders, Roboto, Roboto Mono, monospace;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -29,8 +23,7 @@ code {
 p {
   margin: 0;
   padding: 0;
-  color: red;
-  font-family: "sky" !important;
+  font-family: $mainFont;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -132,7 +125,7 @@ button:active {
 .inventory-control .inventory-control-button {
   font-size: 14px;
   color: #fff;
-  background-color: #0c0c0c66;
+  background-color: rgba(13, 27, 42, 0.8);
   transition: 0.2s;
   padding: 12px 8px;
   border-radius: 2.5%;
@@ -213,6 +206,9 @@ button:active {
   background-color: #0c0c0ccc !important;
   cursor: pointer;
 }
+button  {
+  font-family: $secondFont;
+}
 .useful-controls-exit-button {
   position: absolute !important;
   right: 8px;
@@ -231,8 +227,13 @@ button:active {
   justify-content: space-between;
 }
 .inventory-grid-header-wrapper p {
-  font-size: 16px;
+  font-size: 26px;
 }
+
+.inventory-grid-header-wrapper p.inventory-weight-title {
+  font-size: 18.5px;
+}
+
 .inventory-grid-container {
   display: grid;
   height: calc(52.1vh + 10px);
@@ -248,7 +249,8 @@ button:active {
   background-color: rgba(13, 27, 42, 0.8);
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 15px;
+  background-size: 50% !important;
+  border-radius: 10px;
   image-rendering: -webkit-optimize-contrast;
   position: relative;
   background-size: 7vh;
@@ -262,8 +264,11 @@ button:active {
 .inventory-slot:hover,
 .item-notification-item-box:hover,
 .hotbar-item-slot:hover {
-  transform: scale(1.05); /* Agrandit légèrement le carré */
-  background-color: rgba(13, 27, 42, 0.9); /* Augmente la transparence */
+  // transform: scale(0.95); /* Agrandit légèrement le carré */
+  background-color: rgba(13, 27, 42, 1); /* Augmente la transparence */
+  
+
+
 }
 
 .inventory-control .inventory-control-wrapper {
@@ -292,18 +297,24 @@ button:active {
   }
 }
 .inventory-control .inventory-control-wrapper::after {
-  content: url("../images/fusee.png");
+  content: "";
   position: absolute;
   top: -100px; /* Place l'image à l'intérieur du cadre */
-  left: 50%;
+  left: 55%;
   transform: translateX(-50%);
-  z-index: -1; /* Devant le fond, derrière le contenu */
+  z-index: 100; /* Devant le fond, derrière le contenu */
   pointer-events: none;
   animation: levitate 3s ease-in-out infinite; /* Animation de lévitation */
+  background-image: url("../images/astro-box.svg");
+  background-size: contain; /* Ajuste la taille de l'image */
+  background-repeat: no-repeat;
+  width: 100px; /* La taille de l'image */
+  height: 100px; /* La taille de l'image */
 }
 
+
 .inventory-slot-label-box {
-  background-color: #22232c;
+  background-color: rgba(255, 255, 255, 0.6);
   color: #c1c2c5;
   text-align: center;
   border-bottom-left-radius: 0.25vh;
@@ -311,6 +322,8 @@ button:active {
   border-top-color: #0003;
   border-top-style: inset;
   border-top-width: 1px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .inventory-slot-label-text {
   text-transform: uppercase;
@@ -318,9 +331,10 @@ button:active {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 2px 3px;
-  font-weight: 400;
-  font-family: Roboto;
+  font-weight: 600;
+  font-family: $secondFont;
   font-size: 12px;
+  color: black
 }
 .inventory-slot-number {
   background-color: #fff;
@@ -330,9 +344,10 @@ button:active {
   border-bottom-right-radius: 0.25vh;
   padding: 3px;
   font-size: 12px;
-  font-family: Roboto;
+  font-family: $secondFont;
 }
 .item-slot-wrapper {
+  font-family: $mainFont;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -356,9 +371,11 @@ button:active {
   align-self: flex-end;
   padding: 3px;
   gap: 3px;
+
 }
 .item-slot-info-wrapper p {
   font-size: 12px;
+  font-family: $secondFont;
 }
 .item-slot-currency-wrapper {
   display: flex;
@@ -399,6 +416,7 @@ button:active {
 .tooltip-wrapper p {
   font-size: 12px;
   font-weight: 400;
+  font-family: Roboto;
 }
 .tooltip-header-wrapper {
   display: flex;
@@ -492,8 +510,8 @@ button:active {
 .weight-bar {
   background: rgba(0, 0, 0, 0.4);
   border: 1px inset rgba(0, 0, 0, 0.1);
-  height: 0.8vh;
-  border-radius: 5%;
+  height: 1.2vh;
+  border-radius: 10px;
   overflow: hidden;
 }
 .transition-fade-enter {
