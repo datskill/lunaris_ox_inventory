@@ -225,6 +225,7 @@ button  {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .inventory-grid-header-wrapper p {
   font-size: 26px;
@@ -325,6 +326,11 @@ button  {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
+.inventory-slot:hover .inventory-slot-label-box {
+  background-color: rgba(255, 255, 255, 1);
+}
+
 .inventory-slot-label-text {
   text-transform: uppercase;
   white-space: nowrap;
